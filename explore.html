@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Baby</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f5f5f5;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#111;
+      flex-wrap:wrap;
+    }
+
+    .logo{
+      font-size:40px;
+      color:white;
+      font-family:'Pacifico',cursive;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+
+    .dropdown{
+      position:relative;
+    }
+
+    .dropbtn{
+      background:none;
+      border:none;
+      color:white;
+      padding:12px 22px;
+      font-size:18px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .dropbtn:hover{
+      color:#ff4f81;
+    }
+
+    .dropbtn i{
+      margin-left:8px;
+    }
+
+    .about-btn{
+      background:none;
+      color:white;
+      padding:12px 22px;
+      font-size:18px;
+      font-weight:600;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .about-btn:hover{
+      color:#ff4f81;
+    }
+
+    .dropdown-content{
+      display:none;
+      position:absolute;
+      top:60px;
+      left:0;
+      background:#ffffff;
+      width:350px;
+      border-radius:20px;
+      padding:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+      z-index:1000;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .dropdown:hover .dropdown-content{
+      display:grid;
+    }
+
+    .service-btn{
+      text-decoration:none;
+      background:none;
+      color:#222;
+      padding:15px;
+      font-size:15px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      transition:0.3s;
+    }
+
+    .service-btn i{
+      color:#ff4f81;
+      font-size:18px;
+    }
+
+    .service-btn:hover{
+      color:#ff4f81;
+      transform:translateX(5px);
+    }
+
+    .slider-section{
+      width:100%;
+      flex:1;
+    }
+
+    .slider{
+      width:100%;
+      height:650px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .slides{
+      display:flex;
+      width:100%;
+      height:100%;
+      transition:transform 2s ease-in-out;
+    }
+
+    .slides img{
+      width:100%;
+      height:650px;
+      object-fit:cover;
+      flex-shrink:0;
+    }
+
+    /* Slider Buttons */
+
+    .prev,
+    .next{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.5);
+      color:white;
+      border:none;
+      font-size:30px;
+      width:55px;
+      height:55px;
+      cursor:pointer;
+      border-radius:50%;
+      z-index:10;
+      transition:0.3s;
+    }
+
+    .prev:hover,
+    .next:hover{
+      background:#ff4f81;
+    }
+
+    .prev{
+      left:20px;
+    }
+
+    .next{
+      right:20px;
+    }
+
+    /* Care Section */
+
+    .care-section{
+      width:100%;
+      padding:70px 8%;
+      background:white;
+    }
+
+    .care-container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .care-container h1{
+      font-size:42px;
+      color:#111;
+      margin-bottom:25px;
+      line-height:1.3;
+    }
+
+    .care-container h2{
+      font-size:34px;
+      color:#111;
+      margin-top:50px;
+      margin-bottom:20px;
+    }
+
+    .care-container p{
+      font-size:18px;
+      color:#555;
+      line-height:1.9;
+      margin-bottom:20px;
+    }
+
+    .care-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+      margin-top:40px;
+    }
+
+    .care-card{
+      background:#fff7fa;
+      padding:35px 25px;
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .care-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .care-card i{
+      font-size:45px;
+      color:#ff4f81;
+      margin-bottom:20px;
+    }
+
+    .care-card h3{
+      font-size:24px;
+      margin-bottom:15px;
+      color:#111;
+    }
+
+    /* Interest Section */
+
+    .interest-section{
+      margin-top:70px;
+    }
+
+    .interest-section h2{
+      text-align:center;
+      margin-bottom:40px;
+      font-size:34px;
+      color:#111;
+    }
+
+    .interest-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:25px;
+    }
+
+    .interest-card{
+      background:#ffffff;
+      padding:30px 20px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .interest-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .interest-card i{
+      font-size:50px;
+      color:#ff4f81;
+      margin-bottom:20px;
+    }
+
+    .interest-card h3{
+      font-size:22px;
+      color:#111;
+      margin-bottom:15px;
+    }
+
+    .interest-card p{
+      font-size:15px;
+      color:#666;
+      margin-bottom:25px;
+    }
+
+    .interest-btn{
+      display:inline-block;
+      padding:12px 25px;
+      background:#ff4f81;
+      color:white;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:1000;
+      transition:0.3s;
+    }
+
+    .interest-btn:hover{
+      background:#111;
+    }
+
+    /* Social Media Icons */
+
+    .social-icons{
+      margin-bottom:15px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+    }
+
+    .social-icons a{
+      text-decoration:none;
+      color:white;
+      font-size:28px;
+      transition:0.3s;
+    }
+
+    .social-icons a:hover{
+      transform:translateY(-5px) scale(1.2);
+      color:#ff4f81;
+    }
+
+    footer{
+      text-align:center;
+      background:#111;
+      color:white;
+      padding:20px;
+      margin-top:auto;
+      font-size:18px;
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .slider{
+        height:250px;
+      }
+
+      .slides img{
+        height:250px;
+      }
+
+      .dropdown-content{
+        width:300px;
+        grid-template-columns:1fr;
+      }
+
+      .care-container h1{
+        font-size:28px;
+      }
+
+      .care-container h2{
+        font-size:24px;
+      }
+
+      .interest-section h2{
+        font-size:26px;
+      }
+
+      .prev,
+      .next{
+        width:45px;
+        height:45px;
+        font-size:24px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+
+  <nav>
+
+    <div class="logo">Sweet Baby</div>
+
+    <div class="menu">
+
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Our Services
+          <i class="fa-solid fa-caret-down"></i>
+        </button>
+
+        <div class="dropdown-content">
+
+          <a href="physiotherapy.html" class="service-btn">
+            <i class="fa-solid fa-heart-pulse"></i>
+            Physiotherapy
+          </a>
+
+          <a href="nursing.html" class="service-btn">
+            <i class="fa-solid fa-user-nurse"></i>
+            Nursing
+          </a>
+
+          <a href="medical-equipment.html" class="service-btn">
+            <i class="fa-solid fa-kit-medical"></i>
+            Medical Equipment
+          </a>
+
+          <a href="mother-baby-care.html" class="service-btn">
+            <i class="fa-solid fa-baby"></i>
+            Mother & Baby Care
+          </a>
+
+        </div>
+
+      </div>
+
+      <a href="about.html" class="about-btn">
+        About Us
+      </a>
+
+    </div>
+
+  </nav>
+
+  <!-- Slider -->
+
+  <div class="slider-section">
+
+    <div class="slider">
+
+      <div class="slides" id="slides">
+
+        <img src="images/1.jpg" alt="">
+<img src="images/2.jpg" alt="">
+<img src="images/3.jpg" alt="">
+<img src="images/4.jpg" alt="">
+
+      </div>
+
+      <!-- Backward Button -->
+
+      <button class="prev" onclick="prevSlide()">
+        ❮
+      </button>
+
+      <!-- Forward Button -->
+
+      <button class="next" onclick="nextSlide()">
+        ❯
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Care Section -->
+
+  <section class="care-section">
+
+    <div class="care-container">
+
+      <h1>New Born Baby and Mother Care at Home in Bangalore</h1>
+
+      <p>
+        Portea offers top-notch new born baby and mother care at home in Bangalore.
+        From infant care to postpartum wellness, our dedicated team of well-trained
+        caregivers are here to support your family with personalised care plans.
+      </p>
+
+      <h2>Our Wide Range of Services in Bangalore</h2>
+
+      <div class="care-cards">
+
+        <div class="care-card">
+
+          <i class="fa-solid fa-person-breastfeeding"></i>
+
+          <h3>New Mother Care in Bangalore</h3>
+
+          <p>
+            Well-trained caregivers provide personalised support,
+            including lactation assistance and emotional well-being.
+          </p>
+
+        </div>
+
+        <div class="care-card">
+
+          <i class="fa-solid fa-baby"></i>
+
+          <h3>Newborn Baby Care in Bangalore</h3>
+
+          <p>
+            Feeding assistance, baby massages, and routine
+            health check-ups for newborn babies.
+          </p>
+
+        </div>
+
+        <div class="care-card">
+
+          <i class="fa-solid fa-house-medical"></i>
+
+          <h3>The Coming Home Service</h3>
+
+          <p>
+            Smooth transition for both mother and baby
+            with professional home care support.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Interest Section -->
+
+      <div class="interest-section">
+
+        <h2>These Might be of Interest</h2>
+
+        <div class="interest-cards">
+
+          <div class="interest-card">
+
+            <i class="fa-solid fa-baby"></i>
+
+            <h3>Baby Care Service</h3>
+
+            <p>baby care service</p>
+
+            <a href="baby-care-service.html" class="interest-btn">
+              KNOW MORE
+            </a>
+
+          </div>
+
+          <div class="interest-card">
+
+            <i class="fa-solid fa-person-breastfeeding"></i>
+
+            <h3>Mother Care Service</h3>
+
+            <p>mother care service</p>
+
+            <a href="mother-care-service.html" class="interest-btn">
+              KNOW MORE
+            </a>
+
+          </div>
+
+          <div class="interest-card">
+
+            <i class="fa-solid fa-house-medical"></i>
+
+            <h3>Newborn & Mother Care Services at Home</h3>
+
+            <p>newborn & mother care services at home</p>
+
+            <a href="newborn-mother-care.html" class="interest-btn">
+              KNOW MORE
+            </a>
+
+          </div>
+
+          <div class="interest-card">
+
+            <i class="fa-solid fa-notes-medical"></i>
+
+            <h3>Newborn Baby Care Tips</h3>
+
+            <p>newborn baby care tips</p>
+
+            <a href="newborn-baby-care-tips.html" class="interest-btn">
+              KNOW MORE
+            </a>
+
+          </div>
+
+          <div class="interest-card">
+
+            <i class="fa-solid fa-hands-holding-child"></i>
+
+            <h3>Nanny for Baby Care at Home</h3>
+
+            <p>nanny for baby care at home</p>
+
+            <a href="nanny-baby-care.html" class="interest-btn">
+              KNOW MORE
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+
+    <div class="social-icons">
+
+      <a href="https://www.instagram.com/" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a href="https://www.facebook.com/" target="_blank">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+
+      <a href="https://www.twitter.com/" target="_blank">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+
+      <a href="https://www.youtube.com/" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+      <a href="https://www.linkedin.com/" target="_blank">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+
+    </div>
+
+    © 2026 Sweet Baby | All Rights Reserved
+
+  </footer>
+
+  <!-- Slider Script -->
+
+  <script>
+
+    let currentSlide = 0;
+
+    const slides = document.getElementById("slides");
+
+    const slideImages = document.querySelectorAll(".slides img");
+
+    const totalSlides = slideImages.length;
+
+    function showSlide(index){
+
+      slides.style.transform =
+      `translateX(-${index * 100}%)`;
+
+    }
+
+    function nextSlide(){
+
+      currentSlide++;
+
+      if(currentSlide >= totalSlides){
+        currentSlide = 0;
+      }
+
+      showSlide(currentSlide);
+
+    }
+
+    function prevSlide(){
+
+      currentSlide--;
+
+      if(currentSlide < 0){
+        currentSlide = totalSlides - 1;
+      }
+
+      showSlide(currentSlide);
+
+    }
+
+    /* Auto Slide Slowly One By One */
+
+    setInterval(() => {
+
+      nextSlide();
+
+    }, 5000);
+
+  </script>
+
+</body>
+</html>
